@@ -11,15 +11,6 @@ require 'hashie'
 require 'faraday'
 require 'faraday_middleware'
 require 'pipedrive/version'
-require 'pipedrive/base'
-require 'pipedrive/operations/create'
-require 'pipedrive/operations/read'
-require 'pipedrive/operations/update'
-require 'pipedrive/operations/delete'
-
-# Persons
-require 'pipedrive/person_field'
-require 'pipedrive/person'
 
 module Pipedrive
   extend self
@@ -51,3 +42,16 @@ module Pipedrive
 
   reset!
 end
+
+require 'pipedrive/railties' if defined?(::Rails)
+
+# Core
+require 'pipedrive/base'
+require 'pipedrive/operations/create'
+require 'pipedrive/operations/read'
+require 'pipedrive/operations/update'
+require 'pipedrive/operations/delete'
+
+# Persons
+require 'pipedrive/person_field'
+require 'pipedrive/person'
