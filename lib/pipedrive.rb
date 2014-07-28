@@ -1,0 +1,53 @@
+require 'logger'
+require 'active_support/core_ext/hash'
+require 'active_support/concern'
+require 'active_support/inflector'
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'person', 'persons'
+end
+
+require 'hashie'
+require 'faraday'
+require 'faraday_middleware'
+require 'pipedrive/version'
+require 'pipedrive/base'
+require 'pipedrive/operations/create'
+require 'pipedrive/operations/read'
+require 'pipedrive/operations/update'
+require 'pipedrive/operations/delete'
+
+# Persons
+require 'pipedrive/person_field'
+require 'pipedrive/person'
+
+module Pipedrive
+  extend self
+  attr_accessor :api_token, :debug
+  attr_writer :user_agent, :logger
+
+  # ensures the setup only gets run once
+  @_ran_once = false
+
+  def reset!
+    @logger = nil
+    @_ran_once = false
+    @user_agent = nil
+    @api_token = nil
+  end
+
+  def user_agent
+    @user_agent ||= "Pipedrive Ruby Client v#{::Pipedrive::VERSION}"
+  end
+
+  def setup
+    yield self unless @_ran_once
+    @_ran_once = true
+  end
+
+  def logger
+    @logger ||= Logger.new(STDOUT)
+  end
+
+  reset!
+end

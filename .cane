@@ -1,0 +1,5 @@
+--no-doc
+--no-style
+--style-measure 99
+--abc-max 18
+--style-exclude spec/**/*
