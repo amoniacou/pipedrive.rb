@@ -9,6 +9,7 @@ module Pipedrive
         start = params[:start] || 0
         loop do
           res = chunk(params.merge(start: start))
+          break if res.empty?
           break unless res.success?
           res.data.each do |item|
             yield item
