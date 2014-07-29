@@ -4,13 +4,13 @@ module Pipedrive
       extend ActiveSupport::Concern
       include ::Enumerable
 
+      # This method smells of :reek:TooManyStatements but ignores them
       def each(params = {})
         return to_enum(:each, params) unless block_given?
         start = params[:start] || 0
         loop do
           res = chunk(params.merge(start: start))
-          break if res.empty?
-          break unless res.success?
+          break if !res.try(:data) || !res.success?
           res.data.each do |item|
             yield item
           end
@@ -24,13 +24,13 @@ module Pipedrive
       end
 
       def chunk(params = {})
-        res = make_api_call({ method: :get, url: entity_name }, params)
+        res = make_api_call(:get, params)
         return [] unless res.success?
         res
       end
 
       def find_by_id(id)
-        make_api_call({ method: :get, url: entity_name, id: id }, {})
+        make_api_call(:get, id)
       end
     end
   end

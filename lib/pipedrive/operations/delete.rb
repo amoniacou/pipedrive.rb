@@ -4,11 +4,11 @@ module Pipedrive
       extend ActiveSupport::Concern
 
       def delete(id)
-        make_api_call({ method: :delete, url: entity_name, id: id }, {})
+        make_api_call(:delete, id)
       end
 
       def delete_all
-        make_api_call({ method: :delete, url: entity_name }, {})
+        make_api_call(:delete)
       end
     end
   end

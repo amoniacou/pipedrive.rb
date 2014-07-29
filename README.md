@@ -6,7 +6,7 @@ Pipedrive.com API wrapper
 
 Add this line to your application's Gemfile:
 
-    gem 'pipedrive'
+    gem 'pipedrive.rb'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pipedrive
+    $ gem install pipedrive.rb
 
 ## Usage
 
@@ -37,9 +37,15 @@ person.data # JSON data of person entity
 You can update person:
 
 ```ruby
-res = client.update(12345, {name: 'New Name', 'custom_field_key' => 'value'})
+res = client.update(12345, name: 'New Name', 'custom_field_key' => 'value')
 res.success? # check what request was successful
 res.data # updated JSON data of person
+```
+
+Or you can update person with only hash what include id:
+
+```ruby
+res = client.update(id: 12345, name: 'New Name', 'custom_field_key' => 'value')
 ```
 
 You can get the list of all persons:

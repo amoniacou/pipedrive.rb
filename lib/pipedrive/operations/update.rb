@@ -3,8 +3,11 @@ module Pipedrive
     module Update
       extend ActiveSupport::Concern
 
-      def update(id, params)
-        make_api_call({ method: :put, url: entity_name, id: id }, params)
+      def update(*args)
+        params = args.extract_options!
+        id = params.delete(:id) || args[0]
+        fail 'id must be provided' unless id
+        make_api_call(:put, id, params)
       end
     end
   end

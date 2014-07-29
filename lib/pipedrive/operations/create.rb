@@ -4,7 +4,7 @@ module Pipedrive
       extend ActiveSupport::Concern
 
       def create(params)
-        make_api_call({ method: :post, url: entity_name }, params)
+        make_api_call(:post, params)
       end
     end
   end

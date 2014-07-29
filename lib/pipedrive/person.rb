@@ -5,9 +5,12 @@ module Pipedrive
     include ::Pipedrive::Operations::Update
     include ::Pipedrive::Operations::Delete
 
-    def find_by_name(name, search_by_email = false, params = {})
-      params.merge!(term: name, search_by_email: search_by_email ? 1 : 0)
-      make_api_call({ method: :get, url: entity_name, id: id }, params)
+    def find_by_name(*args)
+      params = args.extract_options!
+      fail 'term is missing' unless args[0]
+      params.merge!(term: args[0])
+      params.merge!(search_by_email: 1) if args[1]
+      make_api_call(:get, params)
     end
   end
 end

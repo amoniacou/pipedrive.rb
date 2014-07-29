@@ -9,22 +9,22 @@ module Pipedrive
       self.class.connection.dup
     end
 
-    def make_api_call(args, params = {})
-      normalize_params(params)
-      get_response(args, params)
+    def make_api_call(*args)
+      params = args.extract_options!
+      method = args[0]
+      fail 'method param missing' unless method.present?
+      res = connection.__send__(method.to_sym, build_url(args), params)
+      process_response(res)
     end
 
-    def normalize_params(params)
-      params.stringify_keys!
-    end
-
-    def get_response(args, params)
-      method = args[:method]
-      url    = args[:url]
-      url << "/#{args[:id]}" if args[:id]
+    def build_url(args)
+      url = entity_name
+      url << "/#{args[1]}" if args[1]
       url << "?api_token=#{@api_token}"
-      fail 'url or method params missing' if !method.present? || !url.present?
-      res = connection.__send__(method, url, params)
+      url
+    end
+
+    def process_response(res)
       if res.success?
         data = if res.body.is_a?(::Hashie::Mash)
                  res.body.merge(success: true)
@@ -63,7 +63,8 @@ module Pipedrive
         }
       end
 
-      def connection
+      # This method smells of :reek:TooManyStatements
+      def connection # :nodoc
         @connection ||= Faraday.new(faraday_options) do |conn|
           conn.request :url_encoded
           conn.response :mashify
