@@ -47,6 +47,7 @@ require 'pipedrive/railties' if defined?(::Rails)
 
 # Core
 require 'pipedrive/base'
+require 'pipedrive/utils'
 require 'pipedrive/operations/create'
 require 'pipedrive/operations/read'
 require 'pipedrive/operations/update'

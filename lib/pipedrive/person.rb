@@ -4,13 +4,15 @@ module Pipedrive
     include ::Pipedrive::Operations::Create
     include ::Pipedrive::Operations::Update
     include ::Pipedrive::Operations::Delete
+    include ::Pipedrive::Utils
 
     def find_by_name(*args)
       params = args.extract_options!
-      fail 'term is missing' unless args[0]
-      params.merge!(term: args[0])
-      params.merge!(search_by_email: 1) if args[1]
-      make_api_call(:get, params)
+      params[:term] ||= args[0]
+      fail 'term is missing' unless params[:term]
+      params[:search_by_email] ||= args[1] ? 1 : 0
+      return to_enum(:find_by_name, params) unless block_given?
+      follow_pagination(:make_api_call, [:get, 'find'], params) { |item| yield item }
     end
   end
 end
