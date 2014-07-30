@@ -15,8 +15,13 @@ Reek::Rake::Task.new do |t|
   t.source_files = Dir['lib/**/*.rb']
 end
 
-# cane
-require 'cane/rake_task'
-Cane::RakeTask.new
+default_tasks = [:spec, :rubocop, :reek]
 
-task default: [:spec, :rubocop, :reek, :cane]
+unless defined? ::Rubinius
+  # cane
+  require 'cane/rake_task'
+  Cane::RakeTask.new
+  default_tasks << :cane
+end
+
+task default: default_tasks

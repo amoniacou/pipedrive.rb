@@ -9,6 +9,8 @@ Style/FileName:
   Enabled: false
 Style/ModuleFunction:
   Enabled: false
+Style/Encoding:
+  Enabled: false
 Documentation:
   Enabled: false
 Style/MethodLength:
