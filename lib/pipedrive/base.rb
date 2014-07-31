@@ -14,7 +14,7 @@ module Pipedrive
       method = args[0]
       fail 'method param missing' unless method.present?
       url = build_url(args, params.delete(:fields_to_select))
-      res = connection.__send__(method.to_sym, url , params)
+      res = connection.__send__(method.to_sym, url, params)
       process_response(res)
     end
 
