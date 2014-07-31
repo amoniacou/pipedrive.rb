@@ -13,13 +13,17 @@ module Pipedrive
       params = args.extract_options!
       method = args[0]
       fail 'method param missing' unless method.present?
-      res = connection.__send__(method.to_sym, build_url(args), params)
+      url = build_url(args, params.delete(:fields_to_select))
+      res = connection.__send__(method.to_sym, url , params)
       process_response(res)
     end
 
-    def build_url(args)
-      url = entity_name
+    def build_url(args, fields_to_select = nil)
+      url = "/v1/#{entity_name}"
       url << "/#{args[1]}" if args[1]
+      if fields_to_select.is_a?(::Array) && fields_to_select.size > 0
+        url << ":(#{fields_to_select.join(',')})"
+      end
       url << "?api_token=#{@api_token}"
       url
     end
@@ -55,7 +59,7 @@ module Pipedrive
     class << self
       def faraday_options
         {
-          url:     'https://api.pipedrive.com/v1',
+          url:     'https://api.pipedrive.com',
           headers: {
             accept:     'application/json',
             user_agent: ::Pipedrive.user_agent

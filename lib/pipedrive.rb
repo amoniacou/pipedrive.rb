@@ -56,3 +56,37 @@ require 'pipedrive/operations/delete'
 # Persons
 require 'pipedrive/person_field'
 require 'pipedrive/person'
+
+# Organizations
+require 'pipedrive/organization_field'
+require 'pipedrive/organization'
+
+# Filters
+require 'pipedrive/filter'
+
+# Products
+require 'pipedrive/product_field'
+require 'pipedrive/product'
+
+# Roles
+require 'pipedrive/role'
+
+# Stages
+require 'pipedrive/stage'
+
+# Goals
+require 'pipedrive/goal'
+
+# Activities
+require 'pipedrive/activity'
+require 'pipedrive/activity_type'
+
+# Deals
+require 'pipedrive/deal_field'
+require 'pipedrive/deal'
+
+# Files
+require 'pipedrive/file'
+
+# Notes
+require 'pipedrive/note'
