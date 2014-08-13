@@ -5,6 +5,7 @@ module Pipedrive
 
       def update(*args)
         params = args.extract_options!
+        params.symbolize_keys!
         id = params.delete(:id) || args[0]
         fail 'id must be provided' unless id
         make_api_call(:put, id, params)
