@@ -80,6 +80,16 @@ RSpec.describe ::Pipedrive::Base do
           with('/v1/bases?api_token=token', {}).and_call_original
         expect(subject.make_api_call(:get, fields_to_select: []))
       end
+      it 'should retry if Errno::ETIMEDOUT' do
+        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        connection = subject.connection
+        allow(subject).to receive(:connection).and_return(connection)
+        allow(connection).to receive(:get).
+          with('/v1/bases?api_token=token', {}).and_raise(Errno::ETIMEDOUT)
+        expect(connection).to receive(:get).
+          with('/v1/bases?api_token=token', {}).and_call_original
+        expect(subject.make_api_call(:get, fields_to_select: []))
+      end
     end
     context 'with id' do
       it 'should call :get' do
