@@ -18,6 +18,9 @@ module Pipedrive
         res = connection.__send__(method.to_sym, url, params)
       rescue Errno::ETIMEDOUT
         retry
+      rescue Faraday::ParsingError
+        sleep 5
+        retry
       end
       process_response(res)
     end
