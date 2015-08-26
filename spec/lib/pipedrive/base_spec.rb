@@ -54,34 +54,34 @@ RSpec.describe ::Pipedrive::Base do
     end
     context 'without id' do
       it 'should call :get' do
-        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:get).with('/v1/bases?api_token=token', {}).and_call_original
         expect(subject.make_api_call(:get))
       end
       it 'should call :post' do
-        stub_request(:post, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:post, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:post).with('/v1/bases?api_token=token', { test: 'bar' }).and_call_original
         expect(subject.make_api_call(:post, test: 'bar'))
       end
       it 'should call :put' do
-        stub_request(:put, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:put, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:put).with('/v1/bases?api_token=token', { test: 'bar' }).and_call_original
         expect(subject.make_api_call(:put, test: 'bar'))
       end
       it 'should use field_selector properly' do
-        stub_request(:get, 'https://api.pipedrive.com/v1/bases:(a,b,c)?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:get, 'https://api.pipedrive.com/v1/bases:(a,b,c)?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:get).
           with('/v1/bases:(a,b,c)?api_token=token', {}).and_call_original
         expect(subject.make_api_call(:get, fields_to_select: %w(a b c)))
       end
       it 'should not use field_selector if it empty' do
-        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:get).
           with('/v1/bases?api_token=token', {}).and_call_original
         expect(subject.make_api_call(:get, fields_to_select: []))
       end
       it 'should retry if Errno::ETIMEDOUT' do
-        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:get, 'https://api.pipedrive.com/v1/bases?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         connection = subject.connection
         allow(subject).to receive(:connection).and_return(connection)
         allow(connection).to receive(:get).
@@ -93,17 +93,17 @@ RSpec.describe ::Pipedrive::Base do
     end
     context 'with id' do
       it 'should call :get' do
-        stub_request(:get, 'https://api.pipedrive.com/v1/bases/12?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:get, 'https://api.pipedrive.com/v1/bases/12?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:get).with('/v1/bases/12?api_token=token', {}).and_call_original
         expect(subject.make_api_call(:get, 12))
       end
       it 'should call :post' do
-        stub_request(:post, 'https://api.pipedrive.com/v1/bases/13?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:post, 'https://api.pipedrive.com/v1/bases/13?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:post).with('/v1/bases/13?api_token=token', { test: 'bar' }).and_call_original
         expect(subject.make_api_call(:post, 13, test: 'bar'))
       end
       it 'should call :put' do
-        stub_request(:put, 'https://api.pipedrive.com/v1/bases/14?api_token=token').to_return(:status => 200, :body => {}, :headers => {})
+        stub_request(:put, 'https://api.pipedrive.com/v1/bases/14?api_token=token').to_return(:status => 200, :body => {}.to_json, :headers => {})
         expect_any_instance_of(::Faraday::Connection).to receive(:put).with('/v1/bases/14?api_token=token', { test: 'bar' }).and_call_original
         expect(subject.make_api_call(:put, 14, test: 'bar'))
       end
