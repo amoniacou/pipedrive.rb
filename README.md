@@ -33,7 +33,7 @@ client = ::Pipedrive::Person.new('api_token')
 You can get person's JSON data:
 
 ```ruby
-person = client.find(12345)
+person = client.find_by_id(12345)
 person.success? # check what request was successful
 person.data # JSON data of person entity
 ```
