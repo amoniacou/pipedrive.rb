@@ -1,13 +1,21 @@
 language: ruby
 rvm:
-  - 2.1
   - ruby-head
   - jruby-19mode
   - rbx-2
-  - 2.2.3
-  - 2.3.1
+  - 2.1.10
+  - 2.2.10
+  - 2.3.8
+  - 2.4.6
+  - 2.5.5
+  - 2.6.3
+
 matrix:
   allow_failures:
     - rvm: ruby-head
+    - rvm: jruby-19mode
+    - rvm: rbx-2
+
 bundler_args: --without local_development
-before_install: gem install bundler
+
+before_install: gem install bundler -v 1.17.3
