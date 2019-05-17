@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/amoniacou/pipedrive.rb.svg?branch=master)](https://travis-ci.org/amoniacou/pipedrive.rb)
 [![Code Climate](https://codeclimate.com/github/dotpromo/pipedrive.rb.png)](https://codeclimate.com/github/dotpromo/pipedrive.rb)
-[![Coverage Status](https://img.shields.io/coveralls/dotpromo/pipedrive.rb.svg)](https://coveralls.io/r/dotpromo/pipedrive.rb)
 
 Pipedrive.com API wrapper
 
