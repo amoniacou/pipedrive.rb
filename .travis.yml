@@ -10,8 +10,6 @@ rvm:
   - 2.5.5
   - 2.6.3
 
-cache: bundler
-
 matrix:
   allow_failures:
     - rvm: ruby-head
@@ -20,5 +18,4 @@ matrix:
 
 bundler_args: --without local_development
 
-before_install:
-  - gem install bundler -v '< 2'
+before_install: gem install bundler -v 1.17.3
