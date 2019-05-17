@@ -14,4 +14,5 @@ group :local_development do
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'pry'
+  gem 'rainbow', '< 3'
 end
