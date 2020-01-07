@@ -3,10 +3,6 @@ require 'active_support/core_ext/hash'
 require 'active_support/concern'
 require 'active_support/inflector'
 
-ActiveSupport::Inflector.inflections do |inflect|
-  inflect.irregular 'person', 'persons'
-end
-
 require 'hashie'
 require 'faraday'
 require 'faraday_middleware'
