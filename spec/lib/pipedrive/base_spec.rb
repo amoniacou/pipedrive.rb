@@ -11,7 +11,7 @@ RSpec.describe ::Pipedrive::Base do
     subject { described_class.faraday_options }
     it { is_expected.to eq({
       url:     'https://api.pipedrive.com',
-      headers: { accept: 'application/json', user_agent: 'Pipedrive Ruby Client v0.1.0' }
+      headers: { accept: 'application/json', user_agent: 'Pipedrive Ruby Client v0.2.0' }
     }) }
   end
 
