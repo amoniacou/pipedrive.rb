@@ -1,7 +1,7 @@
 # Pipedrive
 
 [![Build Status](https://travis-ci.org/amoniacou/pipedrive.rb.svg?branch=master)](https://travis-ci.org/amoniacou/pipedrive.rb)
-[![Code Climate](https://codeclimate.com/github/dotpromo/pipedrive.rb.png)](https://codeclimate.com/github/dotpromo/pipedrive.rb)
+[![Code Climate](https://codeclimate.com/github/amoniacou/pipedrive.rb.png)](https://codeclimate.com/github/amoniacou/pipedrive.rb)
 
 Pipedrive.com API wrapper
 
@@ -92,7 +92,7 @@ And you can skip providing `api_token` to the entities classes.
 
 ## Contributing
 
-1. Fork it ( https://github.com/simonoff/pipedrive/fork )
+1. Fork it ( https://github.com/amoniacou/pipedrive/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
