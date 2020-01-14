@@ -60,7 +60,9 @@ module Pipedrive
     end
 
     def entity_name
-      self.class.name.split('::')[-1].downcase.pluralize
+      class_name = self.class.name.split("::")[-1].downcase.pluralize
+      class_names = { "people" => "persons" }
+      class_names[class_name] || class_name
     end
 
     class << self
