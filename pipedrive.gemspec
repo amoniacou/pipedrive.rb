@@ -7,10 +7,10 @@ Gem::Specification.new do |gem|
   gem.name          = "pipedrive.rb"
   gem.version       = Pipedrive::VERSION
   gem.authors       = ["Alexander Simonov"]
-  gem.email         = ["alex@simonov.me"]
+  gem.email         = ["alex@amoniac.eu"]
   gem.summary       = %q{Pipedrive.com API Wrapper}
   gem.description   = %q{Pipedrive.com API Wrapper}
-  gem.homepage      = 'https://github.com/dotpromo/pipedrive.rb'
+  gem.homepage      = 'https://github.com/amoniacou/pipedrive.rb'
   gem.license       = 'MIT'
 
   gem.files         = `git ls-files -z`.split("\x0")
