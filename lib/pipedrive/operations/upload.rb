@@ -6,11 +6,12 @@ module Pipedrive
       extend ActiveSupport::Concern
 
       def upload(file, mime_type, params = {})
+        filename = ::File.basename(file)
         open(file) do |f|
           params = params.each_with_object({}) do |(key, val), h|
             h[key] = Faraday::ParamPart.new(val, nil, key)
           end
-          params[:file] = Faraday::UploadIO.new(f, mime_type)
+          params[:file] = Faraday::UploadIO.new(f, mime_type, filename)
 
           url = build_url([])
           response = self.class.file_upload_connection.post(url, params)
