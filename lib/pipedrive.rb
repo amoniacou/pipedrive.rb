@@ -86,3 +86,6 @@ require 'pipedrive/file'
 
 # Notes
 require 'pipedrive/note'
+
+# Users
+require 'pipedrive/user'
