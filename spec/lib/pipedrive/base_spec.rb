@@ -17,7 +17,7 @@ RSpec.describe ::Pipedrive::Base do
     it {
       expect(subject).to eq({
                               url:     'https://api.pipedrive.com',
-      headers: { accept: 'application/json', user_agent: 'Pipedrive Ruby Client v0.2.0' }
+      headers: { accept: 'application/json', user_agent: 'Pipedrive Ruby Client v0.3.0' }
                             })
     }
   end
