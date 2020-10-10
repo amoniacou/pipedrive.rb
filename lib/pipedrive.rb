@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'logger'
 require 'active_support/core_ext/hash'
 require 'active_support/concern'
@@ -33,7 +35,7 @@ module Pipedrive
   end
 
   def logger
-    @logger ||= Logger.new(STDOUT)
+    @logger ||= Logger.new($stdout)
   end
 
   reset!

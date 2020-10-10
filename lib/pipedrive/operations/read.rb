@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pipedrive
   module Operations
     module Read
@@ -5,10 +7,10 @@ module Pipedrive
       include ::Enumerable
       include ::Pipedrive::Utils
 
-      # This method smells of :reek:TooManyStatements but ignores them
-      def each(params = {})
+      def each(params = {}, &block)
         return to_enum(:each, params) unless block_given?
-        follow_pagination(:chunk, [], params) { |item| yield item }
+
+        follow_pagination(:chunk, [], params, &block)
       end
 
       def all(params = {})
@@ -18,6 +20,7 @@ module Pipedrive
       def chunk(params = {})
         res = make_api_call(:get, params)
         return [] unless res.success?
+
         res
       end
 

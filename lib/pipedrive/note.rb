@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pipedrive
   class Note < Base
     include ::Pipedrive::Operations::Create
