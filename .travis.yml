@@ -2,9 +2,8 @@ language: ruby
 rvm:
   - ruby-head
   - jruby-19mode
-  - 2.4.6
-  - 2.5.5
   - 2.6.3
+  - 2.7.2
 
 jdk:
   - openjdk8
@@ -13,7 +12,6 @@ matrix:
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-19mode
-    - rvm: rbx-2
 
 bundler_args: --without local_development
 

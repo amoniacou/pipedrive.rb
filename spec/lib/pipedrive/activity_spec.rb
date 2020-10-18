@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe ::Pipedrive::Activity do
   subject { described_class.new('token') }
-  context '#entity_name' do
+
+  describe '#entity_name' do
     subject { super().entity_name }
+
     it { is_expected.to eq('activities') }
   end
 end

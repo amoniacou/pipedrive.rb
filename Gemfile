@@ -1,17 +1,15 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Specify your gem's dependencies in pipedrive.gemspec
 gemspec
 
 group :test do
-  gem 'simplecov', :require => false
-  gem 'coveralls', :require => false
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
 end
 
 group :local_development do
-  gem 'terminal-notifier-guard', require: false if RUBY_PLATFORM.downcase.include?('darwin')
-  gem 'guard-rspec', '>= 4.3.1' ,require: false
-  gem 'guard-bundler', require: false
-  gem 'guard-rubocop', require: false
   gem 'pry'
 end

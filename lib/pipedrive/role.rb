@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pipedrive
   class Role < Base
     include ::Pipedrive::Operations::Create
