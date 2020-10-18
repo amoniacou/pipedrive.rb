@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pipedrive
   class ProductField < Base
     include ::Pipedrive::Operations::Read
