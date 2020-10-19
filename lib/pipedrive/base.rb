@@ -18,6 +18,7 @@ module Pipedrive
       raise 'method param missing' unless method.present?
 
       url = build_url(args, params.delete(:fields_to_select))
+      params = params.to_json unless method.to_sym == :get
       begin
         res = connection.__send__(method.to_sym, url, params)
       rescue Errno::ETIMEDOUT
@@ -72,8 +73,9 @@ module Pipedrive
         {
           url:     'https://api.pipedrive.com',
           headers: {
-            accept:     'application/json',
-            user_agent: ::Pipedrive.user_agent
+            accept:       'application/json',
+            content_type: 'application/json',
+            user_agent:   ::Pipedrive.user_agent
           }
         }
       end

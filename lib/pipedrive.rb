@@ -83,6 +83,10 @@ require 'pipedrive/activity_type'
 require 'pipedrive/deal_field'
 require 'pipedrive/deal'
 
+# Lead
+require 'pipedrive/lead_label'
+require 'pipedrive/lead'
+
 # Files
 require 'pipedrive/file'
 
