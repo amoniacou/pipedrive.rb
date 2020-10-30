@@ -6,5 +6,6 @@ module Pipedrive
     include ::Pipedrive::Operations::Read
     include ::Pipedrive::Operations::Update
     include ::Pipedrive::Operations::Delete
+    include ::Pipedrive::Operations::Upload
   end
 end
