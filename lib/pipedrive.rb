@@ -92,6 +92,7 @@ require 'pipedrive/file'
 
 # Notes
 require 'pipedrive/note'
+require 'pipedrive/note_field'
 
 # Users
 require 'pipedrive/user'
