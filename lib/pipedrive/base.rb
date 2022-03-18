@@ -78,8 +78,6 @@ module Pipedrive
           conn.use FaradayMiddleware::ParseJson
           conn.response :logger, ::Pipedrive.logger if ::Pipedrive.debug
           conn.adapter Faraday.default_adapter
-          conn.options.timeout = 2
-          conn.options.open_timeout = 2
         end
       end
     end
