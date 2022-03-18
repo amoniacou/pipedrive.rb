@@ -14,14 +14,7 @@ module Pipedrive
       method = args[0]
       fail 'method param missing' unless method.present?
       url = build_url(args, params.delete(:fields_to_select))
-      begin
-        res = connection.__send__(method.to_sym, url, params)
-      rescue Errno::ETIMEDOUT
-        retry
-      rescue Faraday::ParsingError
-        sleep 5
-        retry
-      end
+      res = connection.__send__(method.to_sym, url, params)
       process_response(res)
     end
 
@@ -85,6 +78,8 @@ module Pipedrive
           conn.use FaradayMiddleware::ParseJson
           conn.response :logger, ::Pipedrive.logger if ::Pipedrive.debug
           conn.adapter Faraday.default_adapter
+          conn.options.timeout = 2
+          conn.options.open_timeout = 2
         end
       end
     end
