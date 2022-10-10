@@ -57,6 +57,7 @@ require 'pipedrive/person'
 
 # Organizations
 require 'pipedrive/organization_field'
+require 'pipedrive/organization_relationship'
 require 'pipedrive/organization'
 
 # Filters
@@ -92,6 +93,7 @@ require 'pipedrive/file'
 
 # Notes
 require 'pipedrive/note'
+require 'pipedrive/note_field'
 
 # Users
 require 'pipedrive/user'
