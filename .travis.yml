@@ -4,6 +4,7 @@ rvm:
   - jruby-19mode
   - 2.6.3
   - 2.7.2
+  - 3.0.5
 
 jdk:
   - openjdk8
