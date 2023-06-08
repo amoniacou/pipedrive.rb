@@ -4,7 +4,7 @@ require 'logger'
 require 'active_support/core_ext/hash'
 require 'active_support/concern'
 require 'active_support/inflector'
-
+require 'active_support/core_ext/array'
 require 'hashie'
 require 'faraday'
 require 'faraday_middleware'
