@@ -43,7 +43,7 @@ module Pipedrive
         data = if res.body.is_a?(::Hashie::Mash)
                  res.body.merge(success: true)
                else
-                 ::Hashie::Mash.new(success: true)
+                 ::Hashie::Mash.new(success: true, headers: res.headers)
                end
         return data
       end
@@ -52,7 +52,7 @@ module Pipedrive
 
     def failed_response(res)
       failed_res = res.body.merge(success: false, not_authorized: false,
-                                  failed: false)
+                                  failed: false, headers: res.headers)
       case res.status
       when 401
         failed_res[:not_authorized] = true
