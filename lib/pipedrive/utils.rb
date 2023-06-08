@@ -7,7 +7,7 @@ module Pipedrive
     def follow_pagination(method, args, params, &block)
       start = params[:start] || 0
       loop do
-        res = __send__(method, *args, params.merge(start: start))
+        res = __send__(method, *args, **params.merge(start: start))
         break if !res.try(:data) || !res.success?
 
         res.data.each(&block)
