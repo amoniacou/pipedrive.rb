@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Pipedrive::Note do
+RSpec.describe Pipedrive::Note do
   subject { described_class.new('token') }
 
   describe '#entity_name' do

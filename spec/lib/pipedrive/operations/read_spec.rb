@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Pipedrive::Operations::Read do
+RSpec.describe Pipedrive::Operations::Read do
   subject do
-    Class.new(::Pipedrive::Base) do
-      include ::Pipedrive::Operations::Read
+    Class.new(Pipedrive::Base) do
+      include Pipedrive::Operations::Read
     end.new('token')
   end
 
@@ -22,7 +22,7 @@ RSpec.describe ::Pipedrive::Operations::Read do
     end
 
     it 'returns Enumerator if no block given' do
-      expect(subject.each).to be_a(::Enumerator)
+      expect(subject.each).to be_a(Enumerator)
     end
 
     it 'calls to_enum with params' do
@@ -31,23 +31,23 @@ RSpec.describe ::Pipedrive::Operations::Read do
     end
 
     it 'yields data' do
-      expect(subject).to receive(:chunk).and_return(::Hashie::Mash.new(data: [1, 2], success: true))
+      expect(subject).to receive(:chunk).and_return(Hashie::Mash.new(data: [1, 2], success: true))
       expect { |b| subject.each(&b) }.to yield_successive_args(1, 2)
     end
 
     it 'follows pagination' do
-      expect(subject).to receive(:chunk).with(start: 0).and_return(::Hashie::Mash.new(data: [1, 2], success: true, additional_data: additional_data))
-      expect(subject).to receive(:chunk).with(start: 10).and_return(::Hashie::Mash.new(data: [3, 4], success: true))
+      expect(subject).to receive(:chunk).with(start: 0).and_return(Hashie::Mash.new(data: [1, 2], success: true, additional_data: additional_data))
+      expect(subject).to receive(:chunk).with(start: 10).and_return(Hashie::Mash.new(data: [3, 4], success: true))
       expect { |b| subject.each(&b) }.to yield_successive_args(1, 2, 3, 4)
     end
 
     it 'does not yield anything if result is empty' do
-      expect(subject).to receive(:chunk).with(start: 0).and_return(::Hashie::Mash.new(success: true))
+      expect(subject).to receive(:chunk).with(start: 0).and_return(Hashie::Mash.new(success: true))
       expect { |b| subject.each(&b) }.to yield_successive_args
     end
 
     it 'does not yield anything if result is not success' do
-      expect(subject).to receive(:chunk).with(start: 0).and_return(::Hashie::Mash.new(success: false))
+      expect(subject).to receive(:chunk).with(start: 0).and_return(Hashie::Mash.new(success: false))
       expect { |b| subject.each(&b) }.to yield_successive_args
     end
   end

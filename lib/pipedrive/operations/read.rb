@@ -8,7 +8,7 @@ module Pipedrive
       include ::Pipedrive::Utils
 
       def each(params = {}, &block)
-        return to_enum(:each, params) unless block_given?
+        return to_enum(:each, params) unless block
 
         follow_pagination(:chunk, [], params, &block)
       end

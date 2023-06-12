@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Pipedrive do
+RSpec.describe Pipedrive do
   subject { described_class }
 
   before do
@@ -13,7 +13,7 @@ RSpec.describe ::Pipedrive do
     describe '#user_agent' do
       subject { super().user_agent }
 
-      it { is_expected.to eq("Pipedrive Ruby Client v#{::Pipedrive::VERSION}") }
+      it { is_expected.to eq("Pipedrive Ruby Client v#{Pipedrive::VERSION}") }
     end
 
     describe '#api_token' do
@@ -25,7 +25,7 @@ RSpec.describe ::Pipedrive do
     describe '#logger' do
       subject { super().logger }
 
-      it { is_expected.to be_kind_of(::Logger) }
+      it { is_expected.to be_a(Logger) }
     end
   end
 
@@ -41,7 +41,7 @@ RSpec.describe ::Pipedrive do
       end
 
       it 'sets logger' do
-        newlogger = ::Logger.new($stderr)
+        newlogger = Logger.new($stderr)
         client.setup do |c|
           c.logger = newlogger
         end

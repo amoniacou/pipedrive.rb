@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Pipedrive::Operations::Create do
+RSpec.describe Pipedrive::Operations::Create do
   subject do
-    Class.new(::Pipedrive::Base) do
-      include ::Pipedrive::Operations::Create
+    Class.new(Pipedrive::Base) do
+      include Pipedrive::Operations::Create
     end.new('token')
   end
 

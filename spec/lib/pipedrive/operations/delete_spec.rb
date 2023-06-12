@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Pipedrive::Operations::Delete do
+RSpec.describe Pipedrive::Operations::Delete do
   subject do
-    Class.new(::Pipedrive::Base) do
-      include ::Pipedrive::Operations::Delete
+    Class.new(Pipedrive::Base) do
+      include Pipedrive::Operations::Delete
     end.new('token')
   end
 

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe ::Pipedrive::Filter do
+RSpec.describe Pipedrive::Filter do
   subject { described_class.new('token') }
 
   describe '#entity_name' do
