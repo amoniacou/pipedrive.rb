@@ -21,8 +21,8 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>=2.5'
 
   gem.add_dependency('activesupport', '>= 4.0.0')
-  gem.add_dependency('faraday')
-  gem.add_dependency('faraday_middleware')
+  gem.add_dependency('faraday', '~> 2.0')
+  gem.add_dependency('faraday-mashify')
   gem.add_dependency('hashie', '>= 3.0')
   gem.add_development_dependency('bundler')
   gem.add_development_dependency('rake', '> 12')

@@ -7,7 +7,7 @@ require 'active_support/inflector'
 
 require 'hashie'
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday/mashify'
 require 'pipedrive/version'
 
 module Pipedrive
