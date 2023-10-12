@@ -36,18 +36,18 @@ RSpec.describe ::Pipedrive::Operations::Read do
     end
 
     it 'follows pagination' do
-      expect(subject).to receive(:chunk).with(start: 0).and_return(::Hashie::Mash.new(data: [1, 2], success: true, additional_data: additional_data))
-      expect(subject).to receive(:chunk).with(start: 10).and_return(::Hashie::Mash.new(data: [3, 4], success: true))
+      expect(subject).to receive(:chunk).with( { start: 0 } ).and_return(::Hashie::Mash.new(data: [1, 2], success: true, additional_data: additional_data))
+      expect(subject).to receive(:chunk).with( { start: 10 } ).and_return(::Hashie::Mash.new(data: [3, 4], success: true))
       expect { |b| subject.each(&b) }.to yield_successive_args(1, 2, 3, 4)
     end
 
     it 'does not yield anything if result is empty' do
-      expect(subject).to receive(:chunk).with(start: 0).and_return(::Hashie::Mash.new(success: true))
+      expect(subject).to receive(:chunk).with( { start: 0 } ).and_return(::Hashie::Mash.new(success: true))
       expect { |b| subject.each(&b) }.to yield_successive_args
     end
 
     it 'does not yield anything if result is not success' do
-      expect(subject).to receive(:chunk).with(start: 0).and_return(::Hashie::Mash.new(success: false))
+      expect(subject).to receive(:chunk).with( { start: 0 } ).and_return(::Hashie::Mash.new(success: false))
       expect { |b| subject.each(&b) }.to yield_successive_args
     end
   end

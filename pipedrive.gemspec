@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.required_ruby_version = '>=2.5'
 
-  gem.add_dependency('activesupport', '>= 4.0.0')
+  gem.add_dependency('activesupport', '>= 7.0.0')
   gem.add_dependency('faraday')
   gem.add_dependency('faraday_middleware')
   gem.add_dependency('hashie', '>= 3.0')

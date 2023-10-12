@@ -10,6 +10,7 @@ end
 require 'webmock'
 require 'webmock/rspec'
 require 'pipedrive'
+require 'pry'
 
 RSpec.configure do |config|
 end

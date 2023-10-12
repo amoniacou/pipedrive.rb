@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'logger'
+require 'active_support'
 require 'active_support/core_ext/hash'
+require 'active_support/core_ext/array'
 require 'active_support/concern'
 require 'active_support/inflector'
 
